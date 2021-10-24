@@ -2,26 +2,32 @@ const { Client, Intents, DiscordAPIError } = require('discord.js');
 
 const Discord = require('discord.js');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+require('discord-reply');
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 
 const prefix = 's!';
 
 const fs = require('fs');
+const { get } = require('superagent');
 
 const bot = client;
 
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+
 for(const file of commandFiles){
+    // Set the command equal to the file
     const command = require(`./commands/${file}`);
 
-    client.commands.set(command.name, command);
+    // Add the command to the collection
+    bot.commands.set(command.name, command);
 }
 
 client.once('ready', () => {
-    console.log('https://cdn.discordapp.com/attachments/868516505413894175/871876408367022090/stormzy_glitches-1.mp4');
-    bot.user.setActivity("Currently in developer mode 🛠");
+    console.log('Successfully logged in as ' + bot.user.name);
+    bot.user.setActivity("s!help");
 });
 
 client.on('message', message =>{
@@ -47,6 +53,12 @@ client.on('message', message =>{
     }
     if (command === 'invite'){
         client.commands.get('invite').execute(message, args);
+    }
+    if (command === 'woof'){
+        client.commands.get('woof').execute(message, args);
+    }
+    if (command === 'banthiswebsite'){
+        client.commands.get('banthiswebsite').execute(message, args);
     }
 });
 
