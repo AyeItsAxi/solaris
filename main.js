@@ -27,7 +27,7 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
     console.log('Successfully logged in as ' + bot.user.name);
-    bot.user.setActivity("s!help");
+    bot.user.setActivity("Developer Mode 🛠");
 });
 
 client.on('message', message =>{
@@ -59,6 +59,24 @@ client.on('message', message =>{
     }
     if (command === 'banthiswebsite'){
         client.commands.get('banthiswebsite').execute(message, args);
+    }
+    if (command === 'clear'){
+        client.commands.get('clear').execute(message, args);
+    }
+    if (command === 'kick'){
+        client.commands.get('kick').execute(message, args);
+    }
+    if (command === 'ban'){
+        client.commands.get('ban').execute(message, args);
+    }
+    if (command === 'test'){
+        client.commands.get('test').execute(message, args);
+    }
+    if (command === 'mute'){
+        client.commands.get('mute').execute(message, args);
+    }
+    if (command === 'unmute'){
+        client.commands.get('unmute').execute(message, args);
     }
 });
 
