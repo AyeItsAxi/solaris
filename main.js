@@ -25,6 +25,8 @@ for(const file of commandFiles){
     bot.commands.set(command.name, command);
 }
 
+const config = require('./config.json');
+
 client.once('ready', () => {
     console.log('Successfully logged in as ' + bot.user.name);
     var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
@@ -92,4 +94,4 @@ client.on('message', message =>{
     }
 });
 
-client.login('ODg5MTA3MjExNTAxMDQ3ODU5.YUcbng.-8qcao8eGgWbja9TujJvJTitbJs');
+client.login(config.token);
