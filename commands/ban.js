@@ -1,14 +1,45 @@
+const Discord = require('discord.js');
+
+const client = require('discord.js');
+
 module.exports = {
     name: 'ban',
     description: 'shgbhdgds',
     execute(message, args){
         const member = message.mentions.users.first();
-        if(member){
+        const ratio = (!message.member.permissions.has("BAN_MEMBERS"))
+        const permissionTrue = (message.member.permissions.has("BAN_MEMBERS"))
+        if(member, permissionTrue){
             const memberTarget = message.guild.members.cache.get(member.id);
             memberTarget.ban();
-            message.channel.send('The user has been banned!');
+            const banEmbed = new Discord.MessageEmbed()
+            .setColor("#51FF00")
+            .setTitle("The user has been banned!")
+            .setDescription(memberTarget + " has been banned!")
+            .setFooter('User banned by ' + message.author)
+            const adminBanEmbed = new Discord.MessageEmbed()
+            .setColor("#51FF00")
+            .setTitle("You have banned " + memberTarget + '!')
+            .setDescription(memberTarget + " has been banned!")
+            .setFooter('You banned another scrub! (get good noob ggez)')
+            console.log(message.author + ' successfully banned ' + memberTarget)
+            message.channel.send({embeds: [banEmbed]})
+            message.author.send({embeds: [adminBanEmbed]})
         } else{
-            message.channel.send('Invalid user!');
-        } 
+            const errEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("An error occured!")
+            .setDescription("Invalid user! (Maybe the user is not in the server?)")
+            .setFooter(`Contact <@756164525035749529> for assistance.`)
+            console.log(message.author + ' tried to ban a user but something went wrong!')
+            message.channel.send({embeds: [errEmbed]})
+        } if(member, ratio){
+            const permEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("An error occured!")
+            .setDescription("You do not have permission to use this command!")
+            console.log(message.author + ' tried to ban a user but they do not have permission to!')
+            message.channel.send({embeds: [permEmbed]})
+        }
     }
 }

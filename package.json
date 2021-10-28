@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@koenie06/discord.js-music": "^1.2.9",
+    "axios": "^0.24.0",
     "discord-reply": "^0.1.2",
     "discord.js": "^13.2.0",
     "ms": "^2.1.3",

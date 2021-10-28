@@ -6,8 +6,8 @@ module.exports = {
     execute(message, args){
         const helpEmbed = new MessageEmbed()
         .setColor("#03cafc")
-        .setTitle("Help page - Normal")
-        .setDescription("s!help: this command \n \n s!ping: checking if the bot is alive i guess lmao \n \n s!thisdog: hm? \n \n s!wooby: sends a randomly selected cat picture \n \n s!woof: sends a randomly selected dog picture \n \n s!avatar: gets your avatar. (currently does not work for other users)");
+        .setTitle("Help page - Select")
+        .setDescription("s!help-g: displays the general help page \n \ns!help-m: displays the moderation help page");
         message.channel.send({embeds: [helpEmbed]})
     }
 }

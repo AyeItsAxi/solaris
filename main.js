@@ -27,7 +27,10 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
     console.log('Successfully logged in as ' + bot.user.name);
-    bot.user.setActivity("Developer Mode 🛠");
+    var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
+    setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
+        type: 'PLAYING'
+    }), 15000);
 });
 
 client.on('message', message =>{
@@ -48,8 +51,8 @@ client.on('message', message =>{
     if (command === 'thisdog'){
         client.commands.get('thisdog').execute(message, args);
     }
-    if (command === 'help'){
-        client.commands.get('help').execute(message, args);
+    if (command === 'help-g'){
+        client.commands.get('help-g').execute(message, args);
     }
     if (command === 'invite'){
         client.commands.get('invite').execute(message, args);
@@ -78,6 +81,15 @@ client.on('message', message =>{
     if (command === 'unmute'){
         client.commands.get('unmute').execute(message, args);
     }
+    if (command === 'unban'){
+        client.commands.get('unban').execute(message, args);
+    }
+    if (command === 'help-m'){
+        client.commands.get('help-m').execute(message, args);
+    }
+    if (command === 'help'){
+        client.commands.get('help').execute(message, args);
+    }
 });
 
-client.login('ODg5MTA3MjExNTAxMDQ3ODU5.YUcbng.iR6k6ieOSY0JdTRosPW6hR_mobE');
+client.login('ODg5MTA3MjExNTAxMDQ3ODU5.YUcbng.-8qcao8eGgWbja9TujJvJTitbJs');
