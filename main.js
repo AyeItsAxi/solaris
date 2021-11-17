@@ -32,7 +32,7 @@ client.once('ready', () => {
     var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'PLAYING'
-    }), 15000);
+    }), 5000);
 });
 
 client.on('message', message =>{
@@ -84,13 +84,19 @@ client.on('message', message =>{
         client.commands.get('unmute').execute(message, args);
     }
     if (command === 'unban'){
-        client.commands.get('unban').execute(message, args);
+        client.commands.get('unban').execute(client, message, args);
     }
     if (command === 'help-m'){
         client.commands.get('help-m').execute(message, args);
     }
     if (command === 'help'){
         client.commands.get('help').execute(message, args);
+    }
+    if (command === 'avatar'){
+        client.commands.get('avatar').run(client, message, args);
+    }
+    if (command === 'ratio'){
+        client.commands.get('ratio').execute(message, args);
     }
 });
 

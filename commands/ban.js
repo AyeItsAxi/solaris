@@ -9,6 +9,7 @@ module.exports = {
         const member = message.mentions.users.first();
         const ratio = (!message.member.permissions.has("BAN_MEMBERS"))
         const permissionTrue = (message.member.permissions.has("BAN_MEMBERS"))
+        try{
         if(member, permissionTrue){
             const memberTarget = message.guild.members.cache.get(member.id);
             memberTarget.ban();
@@ -23,8 +24,10 @@ module.exports = {
             .setDescription(memberTarget + " has been banned!")
             .setFooter('You banned another scrub! (get good noob ggez)')
             console.log(message.author + ' successfully banned ' + memberTarget)
+            message.author.send({embeds: [adminBanEmbed]}).catch(error => {
+                message.channel.send(`Something went wrong while I tried to send you a log DM!`)
+            })
             message.channel.send({embeds: [banEmbed]})
-            message.author.send({embeds: [adminBanEmbed]})
         } else{
             const errEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
@@ -40,6 +43,14 @@ module.exports = {
             .setDescription("You do not have permission to use this command!")
             console.log(message.author + ' tried to ban a user but they do not have permission to!')
             message.channel.send({embeds: [permEmbed]})
+        }
+        } catch(err) {
+            const fatalErrEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("A fatal error occured!")
+            .setDescription("Contact 1 24 9-ette#9999 for assistance")
+            console.log(message.author + ' tried to ban a user but a fatal error occured.')
+            message.channel.send({embeds: [fatalErrEmbed]})
         }
     }
 }

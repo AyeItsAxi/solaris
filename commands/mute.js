@@ -38,5 +38,6 @@ module.exports = {
             console.log(message.author + ' tried to mute a user but they do not have permission to!')
             message.channel.send({embeds: [permEmbed]})
         }
+
     }
 }
