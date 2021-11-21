@@ -8,9 +8,8 @@ module.exports = {
         .setColor("#03cafc")
         .setTitle("Help page - General")
         .setDescription("s!help: this command \n \n s!ping: checking if the bot is alive i guess lmao \n \n s!thisdog: hm? \n \n s!wooby: sends a randomly selected cat picture \n \n s!woof: sends a randomly selected dog picture \n \n s!avatar: gets your avatar. (currently does not work for other users)");
-        message.author.send({embeds: [helpEmbed]}).catch(error => {
+        message.channel.send({embeds: [helpEmbed]}).catch(error => {
             message.channel.send(`Something went wrong while I tried to send you a DM!`)
         })
-        message.channel.send("I am sending you a DM with the help page!")
     }
 }
