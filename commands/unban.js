@@ -6,7 +6,6 @@ module.exports = {
     async execute(client, message, args){
         const { member, mentions} = message
         if (
-            message.member.permissions.has('ADMINISTRATOR') ||
             message.member.permissions.has('BAN_MEMBERS')
         )
         try{

@@ -8,6 +8,7 @@ module.exports = {
     cooldown: 2,
     aliases: ['randomdog'],
     async execute(message) {
+        try{
         const msg = await message.channel.send("generating a pupper image...")
 
         let { body } = await superagent.get("https://random.dog/woof.json")
@@ -21,5 +22,13 @@ module.exports = {
             .setDescription("woof bark")
         message.channel.send({embeds: [dogEmbed]})
         msg.delete()
-    },
-};
+        } catch(err) {
+            const fatalErrEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("A fatal error occured!")
+            .setDescription("Contact 1 24 9-ette#9999 for assistance")
+            console.log(message.author + ' tried to ban a user but a fatal error occured.')
+            message.channel.send({embeds: [fatalErrEmbed]})
+        }
+    }
+}

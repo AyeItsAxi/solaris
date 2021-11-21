@@ -4,6 +4,7 @@ module.exports = {
     name: 'kick',
     description: 'sajpodasfrcewds',
     execute(message, args){
+        try{
         const member = message.mentions.users.first();
         const ratio = (!message.member.permissions.has("KICK_MEMBERS"))
         const permissionTrue = (message.member.permissions.has("KICK_MEMBERS"))
@@ -39,5 +40,13 @@ module.exports = {
             console.log(message.author.username + ' tried to kick a user but they do not have permission to!')
             message.channel.send({embeds: [permEmbed]})
         }
+    } catch(err) {
+        const fatalErrEmbed = new Discord.MessageEmbed()
+        .setColor("#AB0000")
+        .setTitle("A fatal error occured!")
+        .setDescription("Contact 1 24 9-ette#9999 for assistance")
+        console.log(message.author + ' tried to ban a user but a fatal error occured.')
+        message.channel.send({embeds: [fatalErrEmbed]})
+    }
     }
 }
