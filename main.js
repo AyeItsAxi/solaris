@@ -1,5 +1,7 @@
 const { Client, Intents, DiscordAPIError } = require('discord.js');
 
+//yo this is for a test, you can ignore this
+
 const Discord = require('discord.js');
 
 require('discord-reply');
@@ -28,7 +30,7 @@ for(const file of commandFiles){
 const config = require('./config.json');
 
 client.once('ready', () => {
-    console.log('Successfully logged in as ' + bot.user.name);
+    console.log('Successfully logged in as Solaris DEV#2422');
     var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'PLAYING'
