@@ -29,14 +29,6 @@ for(const file of commandFiles)
     // Add the command to the collection
     bot.commands.set(command.name, command);
 }
-for(const file of commandFiles)
-{
-    // Set the command equal to the file
-    const helpcommand = require(`./helpexamp/${file}`);
-
-    // Add the command to the collection
-    bot.commands.set(command.name, command);
-}
 
 const config = require('./config.json');
 
