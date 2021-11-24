@@ -2,13 +2,16 @@ const Discord = require("discord.js");
 const superagent = require("superagent");
 const { MessageEmbed } = require('discord.js');
 const embed = ('dogEmbed');
-module.exports = {
+module.exports = 
+{
     name: 'woof',
     description: 'random pupper image',
     cooldown: 2,
     aliases: ['randomdog'],
-    async execute(message) {
-        try{
+    async execute(message) 
+    {
+        try
+        {
         const msg = await message.channel.send("generating a pupper image...")
 
         let { body } = await superagent.get("https://random.dog/woof.json")
@@ -22,7 +25,8 @@ module.exports = {
             .setDescription("woof bark")
         message.channel.send({embeds: [dogEmbed]})
         msg.delete()
-        } catch(err) {
+        } catch(err) 
+        {
             const fatalErrEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("A fatal error occured!")

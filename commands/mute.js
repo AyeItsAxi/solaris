@@ -36,7 +36,8 @@ module.exports = {
             console.log(memberTarget + " has been muted by " + message.author);
             }
             }
-            if(target, ratio){
+            if(target, ratio)
+            {
             const permEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("An error occured!")
@@ -53,6 +54,6 @@ module.exports = {
             console.log(message.author + ' tried to ban a user but a fatal error occured.')
             message.channel.send({embeds: [fatalErrEmbed]})
         }
-    }
-}
+      }
+   }
 }    

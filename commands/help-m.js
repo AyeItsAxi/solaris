@@ -3,7 +3,8 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: 'help-m',
     description: "A help command for moderation commands.",
-    execute(message, args){
+    execute(message, args)
+    {
         const helpEmbed = new MessageEmbed()
         .setColor("#03cafc")
         .setTitle("Help page - Moderation")

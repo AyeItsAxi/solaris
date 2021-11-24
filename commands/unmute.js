@@ -1,23 +1,27 @@
 const Discord = require('discord.js');
 const { muted } = require('./mute')
 
-module.exports = {
+module.exports = 
+{
     name: 'unmute',
     description: 'gfsajdhsaekrf',
-    execute(message, args){
+    execute(message, args)
+    {
         const ratio = (!message.member.permissions.has("MUTE_MEMBERS"))
         const target = message.mentions.users.first();
         const permissionTrue = (message.member.permissions.has("MUTE_MEMBERS"))
         try
         {
-        if(target, permissionTrue){
+        if(target, permissionTrue)
+        {
         
             let mainRole = message.guild.roles.cache.find(role => role.name === 'mebers');
             let muteRole = message.guild.roles.cache.find(role => role.name === 'Butthead');
 
             let memberTarget = message.guild.members.cache.get(target.id);
             
-            if (muted){
+            if (muted)
+            {
             memberTarget.roles.remove(muteRole.id);
             memberTarget.roles.add(mainRole.id);
             const unmuteEmbed = new Discord.MessageEmbed()
@@ -27,15 +31,15 @@ module.exports = {
             message.channel.send({embeds: [unmuteEmbed]})
             console.log(memberTarget + " has been unmuted by " + message.author)
             }
-        
-          if(target, ratio){
+          if(target, ratio)
+          {
             const permEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("An error occured!")
             .setDescription("You do not have permission to use this command!")
             console.log(message.author + ' tried to unmute a user but they do not have permission to!')
             message.channel.send({embeds: [permEmbed]})
-        }
+          }
         else
         {
             const nopunishEmbed = new Discord.MessageEmbed()
@@ -47,7 +51,8 @@ module.exports = {
         }
      
     }
-        }  catch(err) {
+        }  catch(err) 
+        {
             const fatalErrEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("A fatal error occured!")

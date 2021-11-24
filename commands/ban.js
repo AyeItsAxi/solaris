@@ -5,12 +5,15 @@ const client = require('discord.js');
 module.exports = {
     name: 'ban',
     description: 'shgbhdgds',
-    execute(message, args){
+    execute(message, args)
+    {
         const member = message.mentions.users.first();
         const ratio = (!message.member.permissions.has("BAN_MEMBERS"))
         const permissionTrue = (message.member.permissions.has("BAN_MEMBERS"))
-    try{
-        if(member, permissionTrue){
+    try
+    {
+        if(member, permissionTrue)
+        {
             const memberTarget = message.guild.members.cache.get(member.id);
             if(memberTarget.permissions.has("MANAGE_MESSAGES"))
             {
@@ -20,7 +23,9 @@ module.exports = {
                     .setDescription("Hey, thats a staff member! nice try.")
                 console.log(message.author + ' tried to ban a staff member >:(')
                 message.channel.send({embeds: [errEmbed]})
-            } else{
+            }
+            else
+            {
             memberTarget.ban();
             const banEmbed = new Discord.MessageEmbed()
             .setColor("#51FF00")
@@ -38,7 +43,9 @@ module.exports = {
             })
             message.channel.send({embeds: [banEmbed]})
         }
-        } else{
+        } 
+        else
+        {
             const errEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("An error occured!")
@@ -46,7 +53,9 @@ module.exports = {
             .setFooter(`Contact <@756164525035749529> for assistance.`)
             console.log(message.author + ' tried to ban a user but something went wrong!')
             message.channel.send({embeds: [errEmbed]})
-        } if(member, ratio){
+        } 
+        if(member, ratio)
+        {
             const permEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("An error occured!")
@@ -54,7 +63,9 @@ module.exports = {
             console.log(message.author + ' tried to ban a user but they do not have permission to!')
             message.channel.send({embeds: [permEmbed]})
         }
-        } catch(err) {
+        } 
+        catch(err) 
+        {
             const fatalErrEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
             .setTitle("A fatal error occured!")

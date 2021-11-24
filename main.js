@@ -19,7 +19,8 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
-for(const file of commandFiles){
+for(const file of commandFiles)
+{
     // Set the command equal to the file
     const command = require(`./commands/${file}`);
 
@@ -29,7 +30,8 @@ for(const file of commandFiles){
 
 const config = require('./config.json');
 
-client.once('ready', () => {
+client.once('ready', () => 
+{
     console.log('Successfully logged in as Solaris DEV#2422');
     var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
@@ -37,67 +39,87 @@ client.once('ready', () => {
     }), 5000);
 });
 
-client.on('message', message =>{
+client.on('message', message =>
+{
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(" ");
     const command = args.shift().toLowerCase();
 
-    if(command === 'ping'){
+    if(command === 'ping')
+    {
         client.commands.get('ping').execute(message, args);
     } 
-    if (command === 'youtube'){
+    if (command === 'youtube')
+    {
         client.commands.get('youtube').execute(message, args);
     } 
-    if (command === 'wooby'){
+    if (command === 'wooby')
+    {
         client.commands.get('wooby').execute(message, args);
     }
-    if (command === 'thisdog'){
+    if (command === 'thisdog')
+    {
         client.commands.get('thisdog').execute(message, args);
     }
-    if (command === 'help-g'){
+    if (command === 'help-g')
+    {
         client.commands.get('help-g').execute(message, args);
     }
-    if (command === 'invite'){
+    if (command === 'invite')
+    {
         client.commands.get('invite').execute(message, args);
     }
-    if (command === 'woof'){
+    if (command === 'woof')
+    {
         client.commands.get('woof').execute(message, args);
     }
-    if (command === 'banthiswebsite'){
+    if (command === 'banthiswebsite')
+    {
         client.commands.get('banthiswebsite').execute(message, args);
     }
-    if (command === 'clear'){
+    if (command === 'clear'
+    ){
         client.commands.get('clear').execute(message, args);
     }
-    if (command === 'kick'){
+    if (command === 'kick')
+    {
         client.commands.get('kick').execute(message, args);
     }
-    if (command === 'ban'){
+    if (command === 'ban')
+    {
         client.commands.get('ban').execute(message, args);
     }
-    if (command === 'test'){
+    if (command === 'test')
+    {
         client.commands.get('test').execute(message, args);
     }
-    if (command === 'mute'){
+    if (command === 'mute')
+    {
         client.commands.get('mute').execute(message, args);
     }
-    if (command === 'unmute'){
+    if (command === 'unmute')
+    {
         client.commands.get('unmute').execute(message, args);
     }
-    if (command === 'unban'){
+    if (command === 'unban')
+    {
         client.commands.get('unban').execute(client, message, args);
     }
-    if (command === 'help-m'){
+    if (command === 'help-m')
+    {
         client.commands.get('help-m').execute(message, args);
     }
-    if (command === 'help'){
+    if (command === 'help')
+    {
         client.commands.get('help').execute(message, args);
     }
-    if (command === 'avatar'){
+    if (command === 'avatar')
+    {
         client.commands.get('avatar').run(client, message, args);
     }
-    if (command === 'ratio'){
+    if (command === 'ratio')
+    {
         client.commands.get('ratio').execute(message, args);
     }
 });
