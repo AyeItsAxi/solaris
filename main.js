@@ -19,10 +19,20 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
+const helpexampFiles = fs.readdirSync('./helpexamp/').filter(file => file.endsWith('.js'));
+
 for(const file of commandFiles)
 {
     // Set the command equal to the file
     const command = require(`./commands/${file}`);
+
+    // Add the command to the collection
+    bot.commands.set(command.name, command);
+}
+for(const file of commandFiles)
+{
+    // Set the command equal to the file
+    const helpcommand = require(`./helpexamp/${file}`);
 
     // Add the command to the collection
     bot.commands.set(command.name, command);
@@ -33,7 +43,7 @@ const config = require('./config.json');
 client.once('ready', () => 
 {
     console.log('Successfully logged in as Solaris DEV#2422');
-    var activities = [`s!help`, `In developer mode`, `pardon our dust`], i = 0;
+    var activities = [`s!help`, `in developer mode`, `pardon our dust`, `with fire`], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'PLAYING'
     }), 5000);
