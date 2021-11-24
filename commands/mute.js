@@ -15,14 +15,26 @@ module.exports = {
 
             let memberTarget = message.guild.members.cache.get(target.id);
             
+            if(memberTarget.permissions.has("MANAGE_MESSAGES"))
+            {
+                const errEmbed = new Discord.MessageEmbed()
+                    .setColor("#AB0000")
+                    .setTitle("Hold on!")
+                    .setDescription("Hey, thats a staff member! nice try.")
+                console.log(message.author + ' tried to mute a staff member >:(')
+                message.channel.send({embeds: [errEmbed]})
+            } else{
             memberTarget.roles.remove(mainRole.id);
             memberTarget.roles.add(muteRole.id);
+            const muted = true
+            module.exports = { muted }
             const muteEmbed = new Discord.MessageEmbed()
             .setColor("#656565")
             .setTitle("Successfully muted!")
             .setDescription("The target user has been successfully muted!")
             message.channel.send({embeds: [muteEmbed]})
             console.log(memberTarget + " has been muted by " + message.author);
+            }
             }
             if(target, ratio){
             const permEmbed = new Discord.MessageEmbed()

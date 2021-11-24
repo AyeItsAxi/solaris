@@ -11,6 +11,15 @@ module.exports = {
         if(member, permissionTrue){
             const memberTarget = message.guild.members.cache.get(member.id);
             const memberTag = message.guild.members.cache.get(member.name);
+            if(memberTarget.permissions.has("MANAGE_MESSAGES"))
+            {
+                const errEmbed = new Discord.MessageEmbed()
+                    .setColor("#AB0000")
+                    .setTitle("Hold on!")
+                    .setDescription("Hey, thats a staff member! nice try.")
+                console.log(message.author + ' tried to kick a staff member >:(')
+                message.channel.send({embeds: [errEmbed]})
+            } else{
             memberTarget.kick();
             let reason = message.author.content;
             if (!reason) reason = 'No reason provided.'
@@ -27,6 +36,7 @@ module.exports = {
             .setDescription(memberTarget + " has been kicked by " + message.author.username + "! \nReason: " + reason)
             .setFooter('uwu rawrr~ owo x3')
             message.author.send({embeds: [moderatorkickEmbed]})
+        }
         } else{
             const errEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")

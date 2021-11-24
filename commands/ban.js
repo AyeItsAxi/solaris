@@ -9,9 +9,18 @@ module.exports = {
         const member = message.mentions.users.first();
         const ratio = (!message.member.permissions.has("BAN_MEMBERS"))
         const permissionTrue = (message.member.permissions.has("BAN_MEMBERS"))
-        try{
+    try{
         if(member, permissionTrue){
             const memberTarget = message.guild.members.cache.get(member.id);
+            if(memberTarget.permissions.has("MANAGE_MESSAGES"))
+            {
+                const errEmbed = new Discord.MessageEmbed()
+                    .setColor("#AB0000")
+                    .setTitle("Hold on!")
+                    .setDescription("Hey, thats a staff member! nice try.")
+                console.log(message.author + ' tried to ban a staff member >:(')
+                message.channel.send({embeds: [errEmbed]})
+            } else{
             memberTarget.ban();
             const banEmbed = new Discord.MessageEmbed()
             .setColor("#51FF00")
@@ -28,6 +37,7 @@ module.exports = {
                 message.channel.send(`Something went wrong while I tried to send you a log DM!`)
             })
             message.channel.send({embeds: [banEmbed]})
+        }
         } else{
             const errEmbed = new Discord.MessageEmbed()
             .setColor("#AB0000")
