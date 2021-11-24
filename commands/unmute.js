@@ -8,14 +8,16 @@ module.exports = {
         const ratio = (!message.member.permissions.has("MUTE_MEMBERS"))
         const target = message.mentions.users.first();
         const permissionTrue = (message.member.permissions.has("MUTE_MEMBERS"))
+        try
+        {
         if(target, permissionTrue){
-        try{
+        
             let mainRole = message.guild.roles.cache.find(role => role.name === 'mebers');
             let muteRole = message.guild.roles.cache.find(role => role.name === 'Butthead');
 
             let memberTarget = message.guild.members.cache.get(target.id);
             
-            if (muted = true){
+            if (muted){
             memberTarget.roles.remove(muteRole.id);
             memberTarget.roles.add(mainRole.id);
             const unmuteEmbed = new Discord.MessageEmbed()
@@ -43,15 +45,16 @@ module.exports = {
             console.log(message.author + ' tried to unmute a user but the target user does not have a currently active punishment.')
             message.channel.send({embeds: [nopunishEmbed]})
         }
-        
-    } catch(err) {
-        const fatalErrEmbed = new Discord.MessageEmbed()
-        .setColor("#AB0000")
-        .setTitle("A fatal error occured!")
-        .setDescription("Contact 1 24 9-ette#9999 for assistance")
-        console.log(message.author + ' tried to ban a user but a fatal error occured.')
-        message.channel.send({embeds: [fatalErrEmbed]})
+     
     }
-   }
- }
+        }  catch(err) {
+            const fatalErrEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("A fatal error occured!")
+            .setDescription("Contact 1 24 9-ette#9999 for assistance")
+            console.log(message.author + ' tried to ban a user but a fatal error occured.')
+            message.channel.send({embeds: [fatalErrEmbed]})
+        }
+    }
 }
+   
