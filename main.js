@@ -35,9 +35,9 @@ const config = require('./config.json');
 client.once('ready', () => 
 {
     console.log('Successfully logged in as Solaris DEV#2422');
-    var activities = [`s!help`, `in developer mode`, `pardon our dust`, `with fire`], i = 0;
+    var activities = [`you`, 'for s!help'], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
-        type: 'PLAYING'
+        type: 'WATCHING'
     }), 5000);
 });
 
@@ -80,8 +80,8 @@ client.on('message', message =>
     {
         client.commands.get('banthiswebsite').execute(message, args);
     }
-    if (command === 'clear'
-    ){
+    if (command === 'clear')
+    {
         client.commands.get('clear').execute(message, args);
     }
     if (command === 'kick')
@@ -123,6 +123,10 @@ client.on('message', message =>
     if (command === 'ratio')
     {
         client.commands.get('ratio').execute(message, args);
+    }  
+    if (command === 'play')
+    {
+        client.commands.get('play').execute(message, args);
     }
 });
 
