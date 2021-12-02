@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { muted } = require('./mute')
+const { muted } = require('./mute.js')
 
 module.exports = 
 {
