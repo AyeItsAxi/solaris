@@ -26,7 +26,7 @@ module.exports = {
             } else{
             memberTarget.roles.remove(mainRole.id);
             memberTarget.roles.add(muteRole.id);
-            let muted = true
+            var muted = true
             module.exports = { muted }
             const muteEmbed = new Discord.MessageEmbed()
             .setColor("#656565")
