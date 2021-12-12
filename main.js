@@ -56,11 +56,11 @@ client.on('message', message =>
     {
         client.commands.get('youtube').execute(message, args);
     } 
-    if (command === 'wooby')
+    if (command === 'cat')
     {
         client.commands.get('wooby').execute(message, args);
     }
-    if (command === 'thisdog')
+    if (command === 'cat')
     {
         client.commands.get('thisdog').execute(message, args);
     }

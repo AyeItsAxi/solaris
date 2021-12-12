@@ -5,13 +5,13 @@ module.exports = {
     description: 'sajdhsaekrf',
     execute(message, args){
         const target = message.mentions.users.first();
-        const ratio = (!message.member.permissions.has("MUTE_MEMBERS"))
-        const permissionTrue = (message.member.permissions.has("MUTE_MEMBERS"))
+        const ratio = (!message.member.permissions.has("MANAGE_ROLES"))
+        const permissionTrue = (message.member.permissions.has("MANAGE_ROLES"))
         if(target, permissionTrue){
             try{
             {
-            let mainRole = message.guild.roles.cache.find(role => role.name === 'mebers');
-            let muteRole = message.guild.roles.cache.find(role => role.name === 'Butthead');
+            let mainRole = message.guild.roles.cache.find(role => role.name === 'Members');
+            let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
             let memberTarget = message.guild.members.cache.get(target.id);
             

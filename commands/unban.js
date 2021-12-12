@@ -6,6 +6,7 @@ module.exports =
     description: "This command unbans a member!",
     async execute(client, message, args){
         const { member, mentions} = message
+        const memberTarget = message.guild.members.cache.get(member.id);
         if 
         (
             message.member.permissions.has('BAN_MEMBERS')
@@ -22,9 +23,9 @@ module.exports =
        {
         const errEmbed = new Discord.MessageEmbed()
         .setColor("#AB0000")
-        .setTitle("An error occured!")
-        .setDescription("The user has no active ban.")
-        console.log(message.author + ' tried to unban a user but the target user had no active ban.')
+        .setTitle("A fatal error occured!")
+        .setDescription("Contact 1 24 9-ette#9999 for assistance.")
+        console.log(message.author + ' tried to unban a user but a fatal error occurred.')
         message.channel.send({embeds: [errEmbed]})
        }
     }
