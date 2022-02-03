@@ -58,9 +58,9 @@ client.on('message', message =>
     } 
     if (command === 'cat')
     {
-        client.commands.get('wooby').execute(message, args);
+        client.commands.get('cat').execute(message, args);
     }
-    if (command === 'cat')
+    if (command === 'thisdog')
     {
         client.commands.get('thisdog').execute(message, args);
     }
@@ -91,10 +91,6 @@ client.on('message', message =>
     if (command === 'ban')
     {
         client.commands.get('ban').execute(message, args);
-    }
-    if (command === 'test')
-    {
-        client.commands.get('test').execute(message, args);
     }
     if (command === 'mute')
     {
