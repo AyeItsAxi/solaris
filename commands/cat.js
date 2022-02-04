@@ -12,10 +12,10 @@ module.exports =
     {
         try
         {
-        const msg = await message.channel.send("generating a wooby image...")
+        const msg = await message.channel.send("generating a random cat image...")
 
         let { body } = await superagent.get("https://aws.random.cat/meow")
-        if(!{ body }) return message.reply("this is awkward.. i couldnt get a wooby image...")
+        if(!{ body }) return message.reply("this is awkward.. i couldnt get a cat image...")
 
         const catEmbed = new Discord.MessageEmbed()
             .setColor("#03cafc")
