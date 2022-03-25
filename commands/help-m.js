@@ -8,7 +8,7 @@ module.exports = {
         const helpEmbed = new MessageEmbed()
         .setColor("#03cafc")
         .setTitle("Help page - Moderation")
-        .setDescription("s!ban: Bans a user \n \ns!unban: Unbans a currently banned user \n \ns!kick: Kicks a user \n \ns!mute: Mutes a user \n \ns!unmute: Unmutes a currently muted member")
+        .setDescription("kd!ban: Bans a user \n \nkd!unban: Unbans a currently banned user \n \nkd!kick: Kicks a user \n \nkd!mute: Mutes a user \n \nkd!unmute: Unmutes a currently muted member")
         message.channel.send({embeds: [helpEmbed]}).catch(error => {
             message.channel.send(`Something went wrong...`)
         })

@@ -1,35 +1,19 @@
 const { Client, Intents, DiscordAPIError } = require('discord.js');
-
-//yo this is for a test, you can ignore this
-
 const Discord = require('discord.js');
-
 require('discord-reply');
-
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
-
 const prefix = 'kd!';
-
 const fs = require('fs');
 const { get } = require('superagent');
-
 const bot = client;
-
 client.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-
 for(const file of commandFiles)
 {
-    // Set the command equal to the file
     const command = require(`./commands/${file}`);
-
-    // Add the command to the collection
     bot.commands.set(command.name, command);
 }
-
 const config = require('./config.json');
-
 client.once('ready', () => 
 {
     console.log('Successfully logged in as KiannaBot DevTest#5546');
@@ -38,7 +22,6 @@ client.once('ready', () =>
         type: 'WATCHING'
     }), 5000);
 });
-
 client.on('message', message =>
 {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -127,5 +110,4 @@ client.on('message', message =>
         client.commands.get('findmydad').execute(message, args);
     }
 });
-
 client.login(config.token);
