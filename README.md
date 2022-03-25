@@ -1,3 +1,3 @@
 # Solaris
 - Simple discord.js bot I occasionally work on
-- This is the V2 branch. This is the newest and up to date branch.
+- This is the DevTest branch. This branch might be highly unstable, but will always be the most up-to-date branch.
