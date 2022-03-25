@@ -8,7 +8,7 @@ require('discord-reply');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 
-const prefix = 's!';
+const prefix = 'kd!';
 
 const fs = require('fs');
 const { get } = require('superagent');
@@ -18,8 +18,6 @@ const bot = client;
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-
-const helpexampFiles = fs.readdirSync('./helpexamp/').filter(file => file.endsWith('.js'));
 
 for(const file of commandFiles)
 {
@@ -34,8 +32,8 @@ const config = require('./config.json');
 
 client.once('ready', () => 
 {
-    console.log('Successfully logged in as Solaris DEV#2422');
-    var activities = [`you`, 'for s!help'], i = 0;
+    console.log('Successfully logged in as KiannaBot DevTest#5546');
+    var activities = [`you`, 'for kd!help'], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'WATCHING'
     }), 5000);
@@ -123,6 +121,10 @@ client.on('message', message =>
     if (command === 'play')
     {
         client.commands.get('play').execute(message, args);
+    }
+    if (command === 'findmydad')
+    {
+        client.commands.get('findmydad').execute(message, args);
     }
 });
 
