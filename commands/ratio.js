@@ -1,11 +1,20 @@
 const Discord = require('discord.js');
-
+const distube = require("distube");
 module.exports = 
 {
     name: 'ratio',
     description: 'i dare you',
     execute(message, args)
     {
+        if (message.guild.id = "954669147437031494")
+        {
+            const errEmbed = new Discord.MessageEmbed()
+            .setColor("#AB0000")
+            .setTitle("That command is disabled in this server!")
+            message.channel.send({embeds: [errEmbed]})
+        }
+        else
+        {
         try 
         {
             const member = message.author
@@ -13,20 +22,21 @@ module.exports =
             const permissionTrue = (message.member.permissions.has("MANAGE_MESSAGES"))
             if(permissionTrue)
             {
-            message.channel.send('fuck off')
+                message.channel.send('fuck off')
             } 
-            else
+                else
+                {
+                    memberTarget.ban();
+                    message.channel.send('counter')
+                }
+            } 
+            catch(err) 
             {
-            memberTarget.ban();
-            message.channel.send('counter')
+                const errEmbed = new Discord.MessageEmbed()
+                .setColor("#AB0000")
+                .setTitle("ur weird")
+                message.channel.send({embeds: [errEmbed]})
             }
-        } 
-        catch(err) 
-        {
-            const errEmbed = new Discord.MessageEmbed()
-            .setColor("#AB0000")
-            .setTitle("ur weird")
-            message.channel.send({embeds: [errEmbed]})
         }
     }
 }

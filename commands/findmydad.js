@@ -17,7 +17,6 @@ module.exports = {
         }
         if (rndInt == 2)
         {
-            //https://th.bing.com/th/id/OIP.Wxuo6Ickq4LqpMeCgtGuxAHaFH?pid=ImgDet&rs=1
             const fatherful = new Discord.MessageEmbed()
                 .setColor("#14FF00")
                 .setTitle("fatherful!")

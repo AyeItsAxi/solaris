@@ -1,11 +1,15 @@
 const { Client, Intents, DiscordAPIError } = require('discord.js');
+const { interaction } = require("discord.js");
 const Discord = require('discord.js');
 require('discord-reply');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]});
 const prefix = 'kd!';
 const fs = require('fs');
 const { get } = require('superagent');
 const bot = client;
+const { DisTube } = require("distube");
+const { SpotifyPlugin } = require("@distube/spotify");
+const { rest } = require("@discordjs/rest");
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles)
@@ -21,6 +25,12 @@ client.once('ready', () =>
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'WATCHING'
     }), 5000);
+});
+client.distube = new DisTube(client, {
+    emitNewSongOnly: true,
+    leaveOnFinish: true,
+    emitAddSongWhenCreatingQueue: false,
+    plugins: [new SpotifyPlugin()]
 });
 client.on('message', message =>
 {
@@ -100,14 +110,62 @@ client.on('message', message =>
     if (command === 'ratio')
     {
         client.commands.get('ratio').execute(message, args);
-    }  
-    if (command === 'play')
-    {
-        client.commands.get('play').execute(message, args);
     }
     if (command === 'findmydad')
     {
         client.commands.get('findmydad').execute(message, args);
+    }
+    if (command === 'autoplay')
+    {
+        client.commands.get('autoplay').run(client, message, args);
+    }
+    if (command === 'leave')
+    {
+        client.commands.get('leave').run(client, message, args);
+    }
+    if (command === 'pause')
+    {
+        client.commands.get('pause').run(client, message, args);
+    }
+    if (command === 'playskip')
+    {
+        client.commands.get('playskip').run(client, message, args);
+    }
+    if (command === 'previous')
+    {
+        client.commands.get('previous').run(client, message, args);
+    }
+    if (command === 'queue')
+    {
+        client.commands.get('queue').run(client, message, args);
+    }
+    if (command === 'resume')
+    {
+        client.commands.get('resume').run(client, message, args);
+    }
+    if (command === 'seek')
+    {
+        client.commands.get('seek').run(client, message, args);
+    }
+    if (command === 'shuffle')
+    {
+        client.commands.get('shuffle').run(client, message, args);
+    }
+    if (command === 'skip')
+    {
+        client.commands.get('skip').run(client, message, args);
+    }
+    if (command === 'stop')
+    {
+        client.commands.get('stop').run(client, message, args);
+    }
+    if (command === 'volume')
+    {
+        client.commands.get('volume').run(client, message, args);
+    }
+    if (command === 'play')
+    {
+        client.commands.get('play').run(client, message, args);
     }
 });
 client.login(config.token);
