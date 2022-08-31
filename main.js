@@ -3,7 +3,18 @@ const { interaction } = require("discord.js");
 const Discord = require('discord.js');
 require('discord-reply');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]});
-const prefix = 'kd!';
+const serverCompileDef = 'public';
+console.log("server compile definiton set as '" + serverCompileDef + "'.")
+var prefix = "s!";
+var activities = [`you`, `for s!help`], i = 0;
+if (serverCompileDef == 'proto'){
+    prefix = "sp!";
+    activities = [`you`, `for sp!help`], i = 0;
+} if (serverCompileDef == 'devtest'){
+    prefix = "kd!";
+    activities = [`you`, `for kd!help`], i = 0;
+} 
+console.log("set command prefix to " + prefix)
 const fs = require('fs');
 const { get } = require('superagent');
 const bot = client;
@@ -20,8 +31,7 @@ for(const file of commandFiles)
 const config = require('./config.json');
 client.once('ready', () => 
 {
-    console.log('Successfully logged in as KiannaBot DevTest#5546');
-    var activities = [`you`, 'for kd!help'], i = 0;
+    console.log('client is ready.');
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, {
         type: 'WATCHING'
     }), 5000);
@@ -32,7 +42,7 @@ client.distube = new DisTube(client, {
     emitAddSongWhenCreatingQueue: false,
     plugins: [new SpotifyPlugin()]
 });
-client.on('message', message =>
+client.on('messageCreate', message =>
 {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -61,7 +71,7 @@ client.on('message', message =>
     }
     if (command === 'invite')
     {
-        client.commands.get('invite').execute(message, args);
+        client.commands.get('invite').execute(message, args, serverCompileDef);
     }
     if (command === 'woof')
     {
@@ -168,4 +178,13 @@ client.on('message', message =>
         client.commands.get('play').run(client, message, args);
     }
 });
-client.login(config.token);
+if (serverCompileDef == 'proto'){
+    client.login(config.protolaristoken);
+    console.log("successfully logged into Protolaris client (Protolaris#8772)");
+} if (serverCompileDef == 'devtest'){
+    client.login(config.devtesttoken);
+    console.log("successfully logged into DevTest client (Solaris DevTest#7068)");
+}  if (serverCompileDef == 'public'){
+    client.login(config.publictoken);
+    console.log("successfully logged into public client (Solaris#2422)");
+}

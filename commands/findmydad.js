@@ -6,7 +6,11 @@ module.exports = {
     execute(message, args)
     {
         const rndInt = Math.floor(Math.random() * 2) + 1
-        if (rndInt == 1)
+        if (args != ""){
+            message.channel.send("Nobody will find your body.")
+            console.log(message.author + " is skunked + fat 💀")
+        }
+        if (args == "" && rndInt == 1)
         {
             const fatherless = new Discord.MessageEmbed()
                 .setColor("#FF0000")
@@ -15,7 +19,7 @@ module.exports = {
                 .setFooter("just another fatherless child...")
             message.channel.send({embeds: [fatherless]})
         }
-        if (rndInt == 2)
+        if (args == "" && rndInt == 2)
         {
             const fatherful = new Discord.MessageEmbed()
                 .setColor("#14FF00")
